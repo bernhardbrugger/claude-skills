@@ -41,11 +41,21 @@ That's it. The `/install` command is now available in every Claude Code session.
 
 ### Install a skill
 
+**Community skill** (any public GitHub repo with a `CLAUDE.md`):
+
 ```
 /install alice/tdd-conventions
 ```
 
-Fetches `CLAUDE.md` from the repo and appends it to your `~/.claude/CLAUDE.md`. Future sessions will automatically include those instructions.
+**Official Anthropic skill** from the [anthropics/skills](https://github.com/anthropics/skills) registry:
+
+```
+/install anthropics/skills/skills/frontend-design
+```
+
+Both fetch the skill content and append it to your `~/.claude/CLAUDE.md`. Future sessions will automatically include those instructions.
+
+For official skills, the command automatically handles the nested path (`anthropics/skills` repo → `skills/frontend-design/` subdirectory) and strips the YAML frontmatter that the official registry adds.
 
 ### List installed skills
 
@@ -56,17 +66,19 @@ Fetches `CLAUDE.md` from the repo and appends it to your `~/.claude/CLAUDE.md`. 
 ```
 Installed skills:
   1. alice/tdd-conventions
-  2. yourname/your-skill
+  2. anthropics/skills/skills/frontend-design
 ```
 
 ### Remove a skill
 
 ```
 /install remove alice/tdd-conventions
+/install remove anthropics/skills/skills/frontend-design
 ```
 
 ```
 ✓ Skill removed: alice/tdd-conventions
+✓ Skill removed: anthropics/skills/skills/frontend-design
 ```
 
 ---
@@ -74,14 +86,15 @@ Installed skills:
 ## How it works
 
 1. `/install author/repo` fetches `CLAUDE.md` from the GitHub repo (tries `main` and `master` branches, root and `.claude/` subdirectory).
-2. It wraps the content in tagged delimiters and appends it to `~/.claude/CLAUDE.md`:
+2. `/install author/repo/path/to/skill` fetches from a subdirectory within the repo — tries `SKILL.md` first (for official registries like `anthropics/skills`), then `CLAUDE.md`. YAML frontmatter is automatically stripped.
+3. The content is wrapped in tagged delimiters and appended to `~/.claude/CLAUDE.md`:
    ```
    <!-- skill: author/repo -->
    ...skill content...
    <!-- /skill: author/repo -->
    ```
-3. Duplicate installs are detected via the tag — installing the same skill twice is a no-op.
-4. `/install remove` surgically removes the tagged block, leaving the rest of your CLAUDE.md intact.
+4. Duplicate installs are detected via the tag — installing the same skill twice is a no-op.
+5. `/install remove` surgically removes the tagged block, leaving the rest of your CLAUDE.md intact.
 
 ---
 
