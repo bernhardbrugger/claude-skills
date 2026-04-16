@@ -42,7 +42,7 @@ That's it. The `/install` command is now available in every Claude Code session.
 ### Install a skill
 
 ```
-/install anthropics/frontend-design
+/install alice/tdd-conventions
 ```
 
 Fetches `CLAUDE.md` from the repo and appends it to your `~/.claude/CLAUDE.md`. Future sessions will automatically include those instructions.
@@ -55,18 +55,18 @@ Fetches `CLAUDE.md` from the repo and appends it to your `~/.claude/CLAUDE.md`. 
 
 ```
 Installed skills:
-  1. anthropics/frontend-design
+  1. alice/tdd-conventions
   2. yourname/your-skill
 ```
 
 ### Remove a skill
 
 ```
-/install remove anthropics/frontend-design
+/install remove alice/tdd-conventions
 ```
 
 ```
-✓ Skill removed: anthropics/frontend-design
+✓ Skill removed: alice/tdd-conventions
 ```
 
 ---
