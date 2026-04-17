@@ -15,7 +15,7 @@ Claude Code skills are just GitHub repos. Anyone can write one — your company'
 **claude-skills** fixes that with one slash command:
 
 ```
-/install @frontend-design              ← official Anthropic skill
+/install +frontend-design              ← official Anthropic skill
 /install wshobson/agents               ← any GitHub repo with a CLAUDE.md
 ```
 
@@ -29,7 +29,7 @@ If a repo has a `CLAUDE.md` (or `SKILL.md`), it's installable. No approval, no r
 |---|:---:|:---:|:---:|
 | Install official Anthropic skills | — | ✓ | ✓ |
 | Install **any** GitHub repo as a skill | — | ✗ | ✓ |
-| Short `@name` syntax for official skills | — | — | ✓ |
+| Short `+name` syntax for official skills | — | — | ✓ |
 | Browse available skills | — | — | ✓ |
 | Update skills to latest version | — | — | ✓ |
 | Remove a skill cleanly | — | — | ✓ |
@@ -51,12 +51,12 @@ That's it. Restart Claude Code and `/install` is available in every session.
 
 ### Install a skill
 
-**Official Anthropic skills** — use the `@name` shorthand:
+**Official Anthropic skills** — use the `+name` shorthand:
 
 ```
-/install @frontend-design
-/install @claude-api
-/install @webapp-testing
+/install +frontend-design
+/install +claude-api
+/install +webapp-testing
 ```
 
 **Any community skill** — just needs a `CLAUDE.md` in the repo root:
@@ -74,11 +74,11 @@ Both fetch the skill content and append it to your `~/.claude/CLAUDE.md`.
 ```
 
 ```
-Official skills  (install with /install @<name>)
+Official skills  (install with /install +<name>)
 
-  @frontend-design       Production-grade UI — web components, pages, apps with distinctive aesthetics
-  @claude-api            Build and optimize apps with the Claude API / Anthropic SDK
-  @webapp-testing        Test local web apps with Playwright — screenshots, logs, UI verification
+  +frontend-design       Production-grade UI — web components, pages, apps with distinctive aesthetics
+  +claude-api            Build and optimize apps with the Claude API / Anthropic SDK
+  +webapp-testing        Test local web apps with Playwright — screenshots, logs, UI verification
   ...
 
 Community skills  →  https://github.com/topics/claude-skills
@@ -93,7 +93,7 @@ Filter by keyword:
 ### Preview a skill before installing
 
 ```
-/install info @frontend-design
+/install info +frontend-design
 /install info wshobson/agents
 ```
 
@@ -104,7 +104,7 @@ Source: https://raw.githubusercontent.com/anthropics/skills/main/skills/frontend
 Create distinctive, production-grade frontend interfaces with high design
 quality. Use when building web components, pages, or applications.
 
-Install with: /install @frontend-design
+Install with: /install +frontend-design
 ```
 
 ### List installed skills
@@ -123,7 +123,7 @@ Installed skills:
 
 ```
 /install update            ← update all installed skills
-/install update @pdf       ← update one skill
+/install update +pdf       ← update one skill
 ```
 
 ```
@@ -134,7 +134,7 @@ Installed skills:
 ### Remove a skill
 
 ```
-/install remove @frontend-design
+/install remove +frontend-design
 /install remove wshobson/agents
 ```
 
@@ -142,27 +142,27 @@ Installed skills:
 
 ## Official Anthropic skills
 
-All installable with `/install @<name>`:
+All installable with `/install +<name>`:
 
-| `@name` | What it does |
+| `+name` | What it does |
 |---|---|
-| `@frontend-design` | Production-grade UI with distinctive aesthetics — websites, dashboards, React components |
-| `@claude-api` | Build, debug, and optimize apps with the Claude API / Anthropic SDK (incl. prompt caching) |
-| `@webapp-testing` | Test local web apps with Playwright — UI verification, screenshots, browser logs |
-| `@web-artifacts-builder` | Build complex multi-component claude.ai HTML artifacts with React, Tailwind, shadcn/ui |
-| `@mcp-builder` | Create MCP (Model Context Protocol) servers in Python (FastMCP) or TypeScript |
-| `@pdf` | Read, create, merge, split, rotate, watermark, and OCR PDF files |
-| `@docx` | Create, read, and edit Word documents (.docx) with full formatting |
-| `@xlsx` | Create, read, edit, and convert spreadsheets (.xlsx, .csv, .tsv) |
-| `@pptx` | Create, edit, and parse PowerPoint presentations (.pptx) |
-| `@doc-coauthoring` | Structured workflow for writing docs, proposals, and technical specs collaboratively |
-| `@canvas-design` | Create original visual designs as PNG/PDF — posters, art pieces, layouts |
-| `@algorithmic-art` | Generative art with p5.js — flow fields, particle systems, seeded randomness |
-| `@brand-guidelines` | Apply Anthropic's official brand colors and typography to any artifact |
-| `@theme-factory` | Style artifacts (slides, docs, HTML pages) with 10 preset themes or a custom one |
-| `@internal-comms` | Write internal communications — status reports, newsletters, incident reports, FAQs |
-| `@slack-gif-creator` | Generate animated GIFs optimized for Slack |
-| `@skill-creator` | Create and optimize new Claude Code skills, run evals to test performance |
+| `+frontend-design` | Production-grade UI with distinctive aesthetics — websites, dashboards, React components |
+| `+claude-api` | Build, debug, and optimize apps with the Claude API / Anthropic SDK (incl. prompt caching) |
+| `+webapp-testing` | Test local web apps with Playwright — UI verification, screenshots, browser logs |
+| `+web-artifacts-builder` | Build complex multi-component claude.ai HTML artifacts with React, Tailwind, shadcn/ui |
+| `+mcp-builder` | Create MCP (Model Context Protocol) servers in Python (FastMCP) or TypeScript |
+| `+pdf` | Read, create, merge, split, rotate, watermark, and OCR PDF files |
+| `+docx` | Create, read, and edit Word documents (.docx) with full formatting |
+| `+xlsx` | Create, read, edit, and convert spreadsheets (.xlsx, .csv, .tsv) |
+| `+pptx` | Create, edit, and parse PowerPoint presentations (.pptx) |
+| `+doc-coauthoring` | Structured workflow for writing docs, proposals, and technical specs collaboratively |
+| `+canvas-design` | Create original visual designs as PNG/PDF — posters, art pieces, layouts |
+| `+algorithmic-art` | Generative art with p5.js — flow fields, particle systems, seeded randomness |
+| `+brand-guidelines` | Apply Anthropic's official brand colors and typography to any artifact |
+| `+theme-factory` | Style artifacts (slides, docs, HTML pages) with 10 preset themes or a custom one |
+| `+internal-comms` | Write internal communications — status reports, newsletters, incident reports, FAQs |
+| `+slack-gif-creator` | Generate animated GIFs optimized for Slack |
+| `+skill-creator` | Create and optimize new Claude Code skills, run evals to test performance |
 
 ---
 
@@ -220,7 +220,7 @@ No registration. No approval. No waiting.
 
 ## How it works
 
-1. **`/install @name`** expands to `anthropics/skills/skills/name` — shorthand for all official skills.
+1. **`/install +name`** expands to `anthropics/skills/skills/name` — shorthand for all official skills.
 2. **`/install author/repo`** fetches `CLAUDE.md` from the repo root (`main`/`master`, root and `.claude/`).
 3. **`/install author/repo/path/to/skill`** fetches from a subdirectory — tries `SKILL.md` first, then `CLAUDE.md`. YAML frontmatter is stripped automatically.
 4. Content is wrapped in tagged delimiters and appended to `~/.claude/CLAUDE.md`:
