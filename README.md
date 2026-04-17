@@ -16,8 +16,7 @@ Claude Code skills are just GitHub repos. Anyone can write one — your company'
 
 ```
 /install @frontend-design              ← official Anthropic skill
-/install alice/my-coding-conventions   ← any GitHub repo with a CLAUDE.md
-/install yourcompany/claude-standards  ← private team conventions
+/install wshobson/agents               ← any GitHub repo with a CLAUDE.md
 ```
 
 If a repo has a `CLAUDE.md` (or `SKILL.md`), it's installable. No approval, no registry, no copy-paste.
@@ -63,8 +62,7 @@ That's it. Restart Claude Code and `/install` is available in every session.
 **Any community skill** — just needs a `CLAUDE.md` in the repo root:
 
 ```
-/install alice/tdd-conventions
-/install yourcompany/coding-standards
+/install wshobson/agents
 ```
 
 Both fetch the skill content and append it to your `~/.claude/CLAUDE.md`.
@@ -101,7 +99,7 @@ Filter by keyword:
 ```
 Installed skills:
   1. anthropics/skills/skills/frontend-design
-  2. alice/tdd-conventions
+  2. wshobson/agents
 ```
 
 ### Update skills
@@ -113,14 +111,14 @@ Installed skills:
 
 ```
 ✓ Updated: anthropics/skills/skills/frontend-design
-⚠ No changes: alice/tdd-conventions
+⚠ No changes: wshobson/agents
 ```
 
 ### Remove a skill
 
 ```
 /install remove @frontend-design
-/install remove alice/tdd-conventions
+/install remove wshobson/agents
 ```
 
 ---
