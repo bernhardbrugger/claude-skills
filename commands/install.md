@@ -4,9 +4,26 @@ The user's input is: $ARGUMENTS
 
 ---
 
+## Step 0 — Resolve `@name` shorthand
+
+Before parsing the subcommand, check if any argument (other than `list`, `search`, `update`, `remove`) starts with `@`. If so, expand it:
+
+- `@name` → `anthropics/skills/skills/name`
+
+Examples:
+- `/install @frontend-design` → install `anthropics/skills/skills/frontend-design`
+- `/install update @pdf` → update `anthropics/skills/skills/pdf`
+- `/install remove @mcp-builder` → remove `anthropics/skills/skills/mcp-builder`
+
+Apply this expansion before any further parsing below.
+
+---
+
 ## How to handle each subcommand
 
 Parse `$ARGUMENTS` to determine the action:
+
+---
 
 ### `/install author/repo` or `/install author/repo/path/to/skill` — Install a skill
 
@@ -79,6 +96,44 @@ Parse `$ARGUMENTS` to determine the action:
    ```
    No skills installed yet. Use /install author/repo to add one.
    ```
+
+---
+
+### `/install search [query]` — Browse available skills
+
+Display skills from the official `anthropics/skills` registry. If a `query` is provided, filter by skills whose name or description contains the query (case-insensitive). If no query, show all.
+
+Format output as:
+
+```
+Official skills  (install with /install @<name>)
+
+  @algorithmic-art       Generative art with p5.js — flow fields, particle systems, seeded randomness
+  @brand-guidelines      Apply Anthropic's brand colors and typography to any artifact
+  @canvas-design         Create original visual designs as PNG/PDF (posters, art, layouts)
+  @claude-api            Build and optimize apps with the Claude API / Anthropic SDK
+  @doc-coauthoring       Structured workflow for writing docs, proposals, and specs
+  @docx                  Create, read, and edit Word documents (.docx)
+  @frontend-design       Production-grade UI — web components, pages, apps with distinctive aesthetics
+  @internal-comms        Write internal comms: status reports, newsletters, incident reports
+  @mcp-builder           Build MCP (Model Context Protocol) servers in Python or TypeScript
+  @pdf                   Read, create, merge, split, rotate, watermark, and OCR PDFs
+  @pptx                  Create, edit, and parse PowerPoint presentations (.pptx)
+  @skill-creator         Create and optimize Claude Code skills, run evals
+  @slack-gif-creator     Generate animated GIFs optimized for Slack
+  @theme-factory         Style artifacts with 10 preset themes or generate a custom one
+  @web-artifacts-builder Build complex claude.ai HTML artifacts with React, Tailwind, shadcn/ui
+  @webapp-testing        Test local web apps with Playwright — screenshots, logs, UI verification
+  @xlsx                  Create, read, edit, and convert spreadsheets (.xlsx, .csv, .tsv)
+
+Community skills  →  https://github.com/topics/claude-skills
+```
+
+If a query is provided and nothing matches, print:
+```
+No skills found matching "{query}".
+Try /install search to see all available skills.
+```
 
 ---
 
