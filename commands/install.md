@@ -28,7 +28,7 @@ Parse `$ARGUMENTS` to determine the action:
 ### `/install author/repo` or `/install author/repo/path/to/skill` — Install a skill
 
 1. Parse the argument to extract components:
-   - If the argument has **exactly 2 slash-separated parts** (e.g. `alice/tdd-conventions`): `author=alice`, `repo=tdd-conventions`, `subpath=` (empty).
+   - If the argument has **exactly 2 slash-separated parts** (e.g. `author/repo`): `author=author`, `repo=repo`, `subpath=` (empty).
    - If the argument has **3 or more slash-separated parts** (e.g. `anthropics/skills/skills/frontend-design`): `author=anthropics`, `repo=skills`, `subpath=skills/frontend-design`.
 
 2. Try fetching the skill content from these URLs **in order**, stopping at the first success.
@@ -74,6 +74,33 @@ Parse `$ARGUMENTS` to determine the action:
 8. Print:
    ```
    ✓ Skill installed: {original argument}
+   ```
+
+---
+
+### `/install info author/repo` or `/install info @name` — Preview a skill before installing
+
+1. Resolve `@name` shorthand if used (same rule as Step 0).
+2. Parse the argument using the same author/repo/subpath logic as the install step.
+3. Fetch the skill content using the same URL priority order as install. Do **not** write anything to disk.
+4. If no content is found, print:
+   ```
+   ✗ No CLAUDE.md or SKILL.md found in {identifier}
+   ```
+   and stop.
+5. Strip YAML frontmatter. If frontmatter was present and contained a `description:` field, extract it.
+6. Print a preview:
+   ```
+   Skill: {identifier}
+   Source: {URL that succeeded}
+
+   {description line if available, otherwise first 15 lines of content}
+
+   Install with: /install {identifier}
+   ```
+7. Also note if the skill is already installed:
+   ```
+   ⚠ Already installed — use /install update {identifier} to refresh.
    ```
 
 ---

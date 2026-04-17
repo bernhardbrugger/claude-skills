@@ -90,6 +90,23 @@ Filter by keyword:
 /install search document
 ```
 
+### Preview a skill before installing
+
+```
+/install info @frontend-design
+/install info wshobson/agents
+```
+
+```
+Skill: anthropics/skills/skills/frontend-design
+Source: https://raw.githubusercontent.com/anthropics/skills/main/skills/frontend-design/SKILL.md
+
+Create distinctive, production-grade frontend interfaces with high design
+quality. Use when building web components, pages, or applications.
+
+Install with: /install @frontend-design
+```
+
 ### List installed skills
 
 ```
@@ -149,15 +166,27 @@ All installable with `/install @<name>`:
 
 ---
 
+## Bundled skills
+
+Skills shipped in this repo, installable immediately via the sub-path format:
+
+| Skill | Install | What it does |
+|---|---|---|
+| `git-conventions` | `/install bernhardbrugger/claude-skills/skills/git-conventions` | Conventional commits, PR descriptions, commit message review |
+
+---
+
 ## Community skills
 
-Skills tagged [`claude-skills`](https://github.com/topics/claude-skills) on GitHub are findable by anyone. To add yours:
+| Repo | Install | What it does |
+|---|---|---|
+| `wshobson/agents` | `/install wshobson/agents` | Multi-agent orchestration and automation for Claude Code |
+| `thedotmack/claude-mem` | `/install thedotmack/claude-mem` | Persistent memory across sessions — captures and injects context |
 
-1. Push a repo with a `CLAUDE.md` at the root
-2. Add the `claude-skills` topic to your repo (Settings → Topics)
-3. Share the install path: `/install your-username/your-repo`
+More community skills tagged [`claude-skills`](https://github.com/topics/claude-skills) on GitHub.
+Also see: [VoltAgent/awesome-agent-skills](https://github.com/VoltAgent/awesome-agent-skills) — a curated index of 1000+ skills.
 
-> Want to be listed here? Open a PR or issue.
+**Want your skill listed?** See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ---
 
