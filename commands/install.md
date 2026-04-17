@@ -82,6 +82,38 @@ Parse `$ARGUMENTS` to determine the action:
 
 ---
 
+### `/install update` or `/install update author/repo[/path/to/skill]` — Update skills
+
+1. Parse the argument:
+   - If **no argument**: update ALL installed skills.
+   - If an **identifier is given**: update only that specific skill.
+
+2. For each skill to update:
+   a. Extract its full identifier from the `<!-- skill: ... -->` tag in `~/.claude/CLAUDE.md`.
+   b. Re-fetch the content using the same URL logic as the install step (using the identifier to determine author/repo/subpath and trying all path variants in order).
+   c. Strip YAML frontmatter from the fetched content (same rule as install).
+   d. Compare the fetched content to the existing block content (between the open and close tags).
+   e. If content differs: replace the old block with the new content. Print:
+      ```
+      ✓ Updated: {identifier}
+      ```
+   f. If content is identical: print:
+      ```
+      ⚠ No changes: {identifier}
+      ```
+   g. If the fetch fails (no CLAUDE.md or SKILL.md found): print:
+      ```
+      ✗ Could not fetch: {identifier}
+      ```
+      and leave the existing block untouched.
+
+3. If updating all skills and none are installed, print:
+   ```
+   No skills installed yet. Use /install author/repo to add one.
+   ```
+
+---
+
 ### `/install remove author/repo` or `/install remove author/repo/path/to/skill` — Remove a skill
 
 1. Parse the argument after `remove` as the full skill identifier (may contain more than 2 slash-separated parts).
